@@ -11,6 +11,7 @@ repos.each {
     pipelineJob(repoName) {
         
         println(repoName+"XXXX")
+        print("Hallo Welt.")
         
         environmentVariables {
           // make the Git repository URL available on the Jenkins agent
