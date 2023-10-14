@@ -8,10 +8,13 @@ repos.each {
 
     if (repoName.equalsIgnoreCase(jobGeneratorRepoName)) return
 
-    job {
-        name "${organization}-${repoName}".replaceAll('/','-')
-        scm {
-            git("git://github.com/${organization}/${repoName}.git", "master")
+    pipelineJob(repoName) {
+        
+        println(repoName+"XXXX")
+        
+        environmentVariables {
+          // make the Git repository URL available on the Jenkins agent
+          env('GIT_REPO_URL', repoName)
         }
     }
 }
