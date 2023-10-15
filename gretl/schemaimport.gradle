@@ -1,4 +1,4 @@
-tasks.register('') {
+tasks.register('fubar') {
     doLast {
         println "Hallo Welt"
     }
