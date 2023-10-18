@@ -5,6 +5,10 @@ def jobGeneratorRepoName = 'job-generator'
 // Eher eine Datei (testweise Array im Code) mit allen Repos und Schema-Jobs.
 // Die Datei könnte später ein Pipeline nachführen, wenn einen neuen Schema-Job erstellt (im Themen-Repo).
 
+// new File("src/main/resources/fileContent.txt").eachLine { line ->
+//    println line
+//}
+
 repoApi = new URL("https://api.github.com/orgs/${organization}/repos")
 repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
 repos.each {
