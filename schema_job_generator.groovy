@@ -12,7 +12,7 @@ jobsFile.eachLine { line ->
     def binding = ["branch": branch]
     def path = new groovy.text.SimpleTemplateEngine()
     .createTemplate(line)
-    .make(branch)    
+    .make(binding)    
     .toString()
 
     println path
