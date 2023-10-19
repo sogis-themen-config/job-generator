@@ -17,11 +17,27 @@ jobsFile.eachLine { line ->
 
     def pathEl = path.split("/")
 
-    println path
-    println(pathEl[0])
+    def theme = pathEl[0]
+    def schema = pathEl[3]
+
+    println(theme)
+    println(schema)
+
+    pipelineJob(schema) {
+        
+        println(schema+"XXXX")
+        print("Hallo Welt.")
+        
+        environmentVariables {
+            // make the Git repository URL available on the Jenkins agent
+            env('GIT_REPO_URL', schema)
+        }
+    }
+
 }
 
 
+/*
 repoApi = new URL("https://api.github.com/orgs/${organization}/repos")
 repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
 repos.each {
@@ -40,3 +56,4 @@ repos.each {
         }
     }
 }
+*/
