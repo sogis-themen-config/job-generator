@@ -10,32 +10,24 @@ def jobsFile = readFileFromWorkspace('schema_jobs.txt')
 jobsFile.eachLine { line ->
     def binding = ["branch": branch]
     def path = new groovy.text.SimpleTemplateEngine()
-    .createTemplate(line)
-    .make(binding)    
-    .toString()
+        .createTemplate(line)
+        .make(binding)    
+        .toString()
 
     def pathEl = path.split("/")
 
     def theme = pathEl[0]
     def schema = pathEl[3]
 
-    println(theme)
-    println(schema)
-
     def jobName = "${jobNamePrefix}${schema}"
 
     pipelineJob(jobName) {
         
-        println(schema+"XXXX")
-        print("Hallo Welt.")
-        
         environmentVariables {
-            // make the Git repository URL available on the Jenkins agent
             env('THEME', theme)
             env('SCHEMA', schema)
         }
 
-        // read Jenkinsfile content
         def pipelineScript = readFileFromWorkspace('Jenkinsfile')
 
         definition {
