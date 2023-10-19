@@ -15,7 +15,10 @@ jobsFile.eachLine { line ->
     .make(binding)    
     .toString()
 
+    def pathEl = path.split("/")
+
     println path
+    println(pathEl[0])
 }
 
 
