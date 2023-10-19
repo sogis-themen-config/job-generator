@@ -7,12 +7,6 @@ def branch = 'main' // muss als Job-Parameter definiert werden
 // Eher eine Datei (testweise Array im Code) mit allen Repos und Schema-Jobs.
 // Die Datei könnte später ein Pipeline nachführen, wenn einen neuen Schema-Job erstellt (im Themen-Repo).
 
-/*
-new File("schema_jobs.txt").eachLine { line ->
-    println line
-}
-*/
-
 def jobsFile = readFileFromWorkspace('schema_jobs.txt')
 jobsFile.eachLine { line ->
   println line
