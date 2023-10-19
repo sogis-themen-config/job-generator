@@ -9,7 +9,7 @@ def branch = 'main' // muss als Job-Parameter definiert werden
 
 def jobsFile = readFileFromWorkspace('schema_jobs.txt')
 jobsFile.eachLine { line ->
-  println line
+  println line.replaceAll('${branch}', branch)
 }
 
 
