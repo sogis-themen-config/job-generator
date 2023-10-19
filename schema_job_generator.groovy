@@ -1,11 +1,9 @@
-def branch = 'main' // muss als Job-Parameter definiert werden
+def branch = 'main' // Das kann nicht durch Benutzer gewählt werden? Sonst werden ja alle überschrieben mit dem Branch.
 
+def SCHEMA_JOB_REPO_URL_SCHEMA = 'https://github.com/sogis-themen-config/schema-job.git'
 def jobNamePrefix = 'schema_'
 
-// Weil es mehrere Jobs geben kann innerhalb eines Repo, reicht das Wissen, dass es ein Repo gibt, nicht aus.
-// Eher eine Datei (testweise Array im Code) mit allen Repos und Schema-Jobs.
-// Die Datei könnte später ein Pipeline nachführen, wenn einen neuen Schema-Job erstellt (im Themen-Repo).
-
+// schema_jobs.txt kann (?) durch Pipeline nachgeführt werden.
 def jobsFile = readFileFromWorkspace('schema_jobs.txt')
 jobsFile.eachLine { line ->
     def binding = ["branch": branch]
@@ -22,8 +20,12 @@ jobsFile.eachLine { line ->
     def jobName = "${jobNamePrefix}${schema}"
 
     pipelineJob(jobName) {
-        
+        properties {
+            disableConcurrentBuilds()
+        }   
+
         environmentVariables {
+            env('GIT_REPO_URL', SCHEMA_JOB_REPO_URL_SCHEMA)
             env('THEME', theme)
             env('SCHEMA', schema)
         }
@@ -36,29 +38,22 @@ jobsFile.eachLine { line ->
                 sandbox()
             }
         }
-
-    }
-
-}
-
-
-/*
-repoApi = new URL("https://api.github.com/orgs/${organization}/repos")
-repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
-repos.each {
-    def repoName = it.name
-
-    if (repoName.equalsIgnoreCase(jobGeneratorRepoName)) return
-
-    pipelineJob(repoName) {
-        
-        println(repoName+"XXXX")
-        print("Hallo Welt.")
-        
-        environmentVariables {
-          // make the Git repository URL available on the Jenkins agent
-          env('GIT_REPO_URL', repoName)
-        }
     }
 }
-*/
+
+listView('Schema-Jobs') {
+    jobs {
+        regex(/^(schema_.*|gretl-job-generator-schema)/)
+    }
+    columns {
+        status()
+        weather()
+        name()
+        lastSuccess()
+        lastFailure()
+        lastDuration()
+        buildButton()
+        favoriteColumn()
+    }
+}
+
