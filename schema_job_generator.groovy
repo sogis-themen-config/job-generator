@@ -1,6 +1,8 @@
 def organization = 'sogis-themen-config'
 def jobGeneratorRepoName = 'job-generator'
 
+def branch = 'main' // muss als Job-Parameter definiert werden
+
 // Weil es mehrere Jobs geben kann innerhalb eines Repo, reicht das Wissen, dass es ein Repo gibt, nicht aus.
 // Eher eine Datei (testweise Array im Code) mit allen Repos und Schema-Jobs.
 // Die Datei könnte später ein Pipeline nachführen, wenn einen neuen Schema-Job erstellt (im Themen-Repo).
