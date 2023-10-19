@@ -1,7 +1,6 @@
-def organization = 'sogis-themen-config'
-def jobGeneratorRepoName = 'job-generator'
-
 def branch = 'main' // muss als Job-Parameter definiert werden
+
+def jobNamePrefix = 'schema_'
 
 // Weil es mehrere Jobs geben kann innerhalb eines Repo, reicht das Wissen, dass es ein Repo gibt, nicht aus.
 // Eher eine Datei (testweise Array im Code) mit allen Repos und Schema-Jobs.
@@ -23,7 +22,9 @@ jobsFile.eachLine { line ->
     println(theme)
     println(schema)
 
-    pipelineJob(schema) {
+    def jobName = "${jobNamePrefix}${schema}"
+
+    pipelineJob(jobName) {
         
         println(schema+"XXXX")
         print("Hallo Welt.")
@@ -32,6 +33,9 @@ jobsFile.eachLine { line ->
             // make the Git repository URL available on the Jenkins agent
             env('GIT_REPO_URL', schema)
         }
+
+        // read Jenkinsfile content
+        def pipelineScript = readFileFromWorkspace('Jenkinsfile')
 
         definition {
             cps {
