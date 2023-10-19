@@ -6,8 +6,6 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'gradle --version'
-            }
-            steps {
                 echo env.SCHEMA
             }
         }
