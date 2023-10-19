@@ -12,6 +12,10 @@ new File("schema_jobs.txt").eachLine { line ->
 */
 
 def jobsFile = readFileFromWorkspace('schema_jobs.txt')
+jobsFile.eachLine { line ->
+  println line
+}
+
 
 repoApi = new URL("https://api.github.com/orgs/${organization}/repos")
 repos = new groovy.json.JsonSlurper().parse(repoApi.newReader())
