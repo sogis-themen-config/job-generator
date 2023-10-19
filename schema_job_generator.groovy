@@ -9,6 +9,7 @@ def branch = 'main' // muss als Job-Parameter definiert werden
 
 def jobsFile = readFileFromWorkspace('schema_jobs.txt')
 jobsFile.eachLine { line ->
+    def binding = ["branch": branch]
     def path = new groovy.text.SimpleTemplateEngine()
     .createTemplate(line)
     .make(branch)    
