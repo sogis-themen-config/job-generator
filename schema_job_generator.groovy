@@ -31,7 +31,8 @@ jobsFile.eachLine { line ->
         
         environmentVariables {
             // make the Git repository URL available on the Jenkins agent
-            env('GIT_REPO_URL', schema)
+            env('THEME', theme)
+            env('SCHEMA', schema)
         }
 
         // read Jenkinsfile content
