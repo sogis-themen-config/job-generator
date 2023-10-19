@@ -32,6 +32,14 @@ jobsFile.eachLine { line ->
             // make the Git repository URL available on the Jenkins agent
             env('GIT_REPO_URL', schema)
         }
+
+        definition {
+            cps {
+                script(pipelineScript)
+                sandbox()
+            }
+        }
+
     }
 
 }
