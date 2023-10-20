@@ -30,7 +30,7 @@ jobsFile.eachLine { line ->
             env('SCHEMA', schema)
         }
 
-        def pipelineScript = readFileFromWorkspace('Jenkinsfile')
+        def pipelineScript = readFileFromWorkspace('Jenkinsfile.schema')
 
         definition {
             cps {
