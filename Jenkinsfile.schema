@@ -13,14 +13,14 @@ pipeline {
     stages {
         stage('Run schema job') {
             steps {
-                git url: "${env.GIT_REPO_URL}", branch: "main", changelog: false
+                git url: "${env.SCHEMA_GIT_REPO_URL}", branch: "main", changelog: false
                 sh 'pwd'
                 sh 'ls -la'
                 
                 sh 'cp $secretFile ./gradle.properties'
                 sh 'cat ./gradle.properties'
 
-                sh "gretl -Ptheme=${env.THEME} -Pschema=${env.SCHEMA} createSchema grantPrivileges"
+                sh "gretl -Ptheme=${env.SCHEMA_THEME} -Pschema=${env.SCHEMA_NAME} createSchema grantPrivileges"
             }
         }
     }
