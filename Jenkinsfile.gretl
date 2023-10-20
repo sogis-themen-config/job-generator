@@ -2,6 +2,10 @@ pipeline {
     environment { 
         secretFile = credentials('gretlProperties') 
     }
+    
+    options {
+        timeout(time: 6, unit: 'HOURS')
+    }
 
     agent {
         docker { 

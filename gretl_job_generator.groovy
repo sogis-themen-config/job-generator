@@ -23,9 +23,9 @@ jobsFile.eachLine { line ->
     //def jobName = "${jobNamePrefix}${schema}"
 
     pipelineJob(jobName) {
-        properties {
-            disableConcurrentBuilds()
-        }   
+        // properties {
+        //     disableConcurrentBuilds()
+        // }   
 
         environmentVariables {
             env('GRETL_GIT_REPO_URL', gretlJobRepoUrl)

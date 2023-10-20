@@ -3,6 +3,11 @@ pipeline {
         secretFile = credentials('gretlProperties') 
     }
 
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 30, unit: 'MINUTES')
+    }
+
     agent {
         docker { 
             image 'sogis/gretl:latest' 

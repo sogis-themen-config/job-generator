@@ -20,9 +20,9 @@ jobsFile.eachLine { line ->
     def jobName = "${jobNamePrefix}${schema}"
 
     pipelineJob(jobName) {
-        properties {
-            disableConcurrentBuilds()
-        }   
+        // properties {
+        //     disableConcurrentBuilds()
+        // }   
 
         // Parameter for DB schema jobs:
         parameters {
