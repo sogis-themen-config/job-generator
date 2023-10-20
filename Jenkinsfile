@@ -7,6 +7,7 @@ pipeline {
         docker { 
             image 'sogis/gretl:latest' 
             //args "-e foo=bar"
+            args "--network jenkins-backend"
         }
     }
     stages {
