@@ -13,14 +13,14 @@ pipeline {
     stages {
         stage('Run GRETL job') {
             steps {
-                git url: "${env.GIT_REPO_URL}", branch: "main", changelog: false
+                git url: "${env.GRETL_GIT_REPO_URL}", branch: "main", changelog: false
                 sh 'pwd'
                 sh 'ls -la'
                 
                 sh 'cp $secretFile ./gradle.properties'
                 sh 'cat ./gradle.properties'
 
-                sh "cd gretl/${JOB_NAME}"
+                sh "cd gretl/${GRETL_JOB_NAME}"
                 sh 'pwd'
                 sh 'ls -la'
 

@@ -28,9 +28,9 @@ jobsFile.eachLine { line ->
         }   
 
         environmentVariables {
-            env('GIT_REPO_URL', gretlJobRepoUrl)
-            env('THEME', theme)
-            env('JOB_NAME', jobName)
+            env('GRETL_GIT_REPO_URL', gretlJobRepoUrl)
+            env('GRETL_THEME', theme)
+            env('GRETL_JOB_NAME', jobName)
             // branch hier als env
         }
 
