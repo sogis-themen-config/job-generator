@@ -20,7 +20,7 @@ pipeline {
                 sh 'cp $secretFile ./gradle.properties'
                 sh 'cat ./gradle.properties'
 
-                sh "gretl -Ptheme=${env.THEME} -Pschema=${env.SCHEMA} fubar"
+                sh "gretl -Ptheme=${env.THEME} -Pschema=${env.SCHEMA} createSchema grantPrivileges"
             }
         }
     }
