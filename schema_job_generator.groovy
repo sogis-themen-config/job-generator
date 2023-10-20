@@ -53,7 +53,6 @@ listView('Schema-Jobs') {
         lastFailure()
         lastDuration()
         buildButton()
-        favoriteColumn()
     }
 }
 
