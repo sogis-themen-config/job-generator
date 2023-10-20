@@ -1,6 +1,5 @@
 pipeline {
     environment { 
-        YOUR_CRED = credentials('dbUriEdit') 
         secretFile = credentials('gretlProperties') 
     }
 
