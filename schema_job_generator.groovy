@@ -1,6 +1,6 @@
 def branch = 'main' // Das kann nicht durch Benutzer gewählt werden? Sonst werden ja alle überschrieben mit dem Branch.
 
-def SCHEMA_JOB_REPO_URL_SCHEMA = 'https://github.com/sogis-themen-config/schema-job.git'
+def SCHEMA_JOB_REPO_URL = 'https://github.com/sogis-themen-config/schema-job.git'
 def jobNamePrefix = 'schema_'
 
 // schema_jobs.txt kann (?) durch Pipeline nachgeführt werden.
@@ -25,7 +25,7 @@ jobsFile.eachLine { line ->
         }   
 
         environmentVariables {
-            env('GIT_REPO_URL', SCHEMA_JOB_REPO_URL_SCHEMA)
+            env('GIT_REPO_URL', SCHEMA_JOB_REPO_URL)
             env('THEME', theme)
             env('SCHEMA', schema)
         }

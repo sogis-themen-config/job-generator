@@ -1,0 +1,36 @@
+pipeline {
+    environment { 
+        secretFile = credentials('gretlProperties') 
+    }
+
+    agent {
+        docker { 
+            image 'sogis/gretl:latest' 
+            //args "-e foo=bar"
+            args "--network jenkins-backend"
+        }
+    }
+    stages {
+        stage('Run GRETL job') {
+            steps {
+                git url: "${env.GIT_REPO_URL}", branch: "main", changelog: false
+                sh 'pwd'
+                sh 'ls -la'
+                
+                sh 'cp $secretFile ./gradle.properties'
+                sh 'cat ./gradle.properties'
+
+                sh "cd gretl/${JOB_NAME}"
+                sh 'pwd'
+                sh 'ls -la'
+
+                sh "gretl"
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
