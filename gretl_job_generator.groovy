@@ -18,6 +18,8 @@ jobsFile.eachLine { line ->
 
     def gretlJobRepoUrl = GRETL_JOB_REPO_BASE_URL + theme + ".git"
 
+    println(gretlJobRepoUrl+"*****")
+
     //def jobName = "${jobNamePrefix}${schema}"
 
     pipelineJob(jobName) {
