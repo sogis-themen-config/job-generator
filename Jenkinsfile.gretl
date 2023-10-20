@@ -17,14 +17,14 @@ pipeline {
                 sh 'pwd'
                 sh 'ls -la'
                 
-                sh 'cp $secretFile ./gradle.properties'
-                //sh 'cat ./gradle.properties'
+                dir("gretl/${GRETL_JOB_NAME}") {
+                    sh 'cp $secretFile ./gradle.properties'
+                    sh 'pwd'
+                    sh 'ls -la'
 
-                sh "cd gretl/${GRETL_JOB_NAME}"
-                sh 'pwd'
-                sh 'ls -la'
+                    sh "gretl"
+                }
 
-                sh "gretl"
             }
         }
     }

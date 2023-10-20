@@ -25,9 +25,9 @@ jobsFile.eachLine { line ->
         }   
 
         environmentVariables {
-            env('GIT_REPO_URL', SCHEMA_JOB_REPO_URL)
-            env('THEME', theme)
-            env('SCHEMA', schema)
+            env('SCHEMA_GIT_REPO_URL', SCHEMA_JOB_REPO_URL)
+            env('SCHEMA_THEME', theme)
+            env('SCHEMA_NAME', schema)
         }
 
         def pipelineScript = readFileFromWorkspace('Jenkinsfile.schema')

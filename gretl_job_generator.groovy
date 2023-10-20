@@ -45,18 +45,18 @@ jobsFile.eachLine { line ->
     }
 }
 
-// listView('GRETL-Jobs') {
-//     jobs {
-//         regex(/^(?!(schema_|oereb_|oerebv2_|gretl-job-generator-schema|gretl-job-generator-oereb|gretl-job-generator-oerebv2)).*/)
-//     }
-//     columns {
-//         status()
-//         weather()
-//         name()
-//         lastSuccess()
-//         lastFailure()
-//         lastDuration()
-//         buildButton()
-//     }
-// }
+listView('GRETL-Jobs') {
+    jobs {
+        regex(/^(?!(schema_|oereb_|oerebv2_|gretl-job-generator-schema|gretl-job-generator-oereb|gretl-job-generator-oerebv2)).*/)
+    }
+    columns {
+        status()
+        weather()
+        name()
+        lastSuccess()
+        lastFailure()
+        lastDuration()
+        buildButton()
+    }
+}
 
