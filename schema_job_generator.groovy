@@ -29,6 +29,10 @@ jobsFile.eachLine { line ->
             choiceParam('GRADLE_TASKS', ['createSchema grantPrivileges', 'dropSchema'], 'Select which tasks to execute')
         }
 
+        logRotator {
+            numToKeep(5)
+        }
+
         environmentVariables {
             env('SCHEMA_GIT_REPO_URL', SCHEMA_JOB_REPO_URL)
             env('SCHEMA_THEME', theme)
