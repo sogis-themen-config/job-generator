@@ -27,6 +27,10 @@ jobsFile.eachLine { line ->
         //     disableConcurrentBuilds()
         // }   
 
+        logRotator {
+            numToKeep(10)
+        }
+
         environmentVariables {
             env('GRETL_GIT_REPO_URL', gretlJobRepoUrl)
             env('GRETL_THEME', theme)
