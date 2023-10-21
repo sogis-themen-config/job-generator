@@ -1,1 +1,2 @@
 ch.so.afu.abbaustellen/${branch}/schema/afu_abbaustellen_pub/afu_abbaustellen_pub.ini
+ch.so.agi.av.meldewesen/${branch}/schema/agi_av_meldewesen_work_pub/agi_av_meldewesen_work_pub.ini
