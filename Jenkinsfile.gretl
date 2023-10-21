@@ -1,6 +1,6 @@
 pipeline {
     environment { 
-        secretFile = credentials('gretlProperties') 
+        secretFile = credentials('gretljobsProperties') 
     }
     
     options {
