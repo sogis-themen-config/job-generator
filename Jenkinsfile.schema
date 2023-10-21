@@ -28,7 +28,7 @@ pipeline {
                 sh 'ls -la'
                 
                 sh 'cp $secretFile ./gradle.properties'
-                sh 'cat ./gradle.properties'
+                //sh 'cat ./gradle.properties'
 
                 sh "gretl -Ptheme=${env.SCHEMA_THEME} -Pschema=${env.SCHEMA_NAME} ${params.GRADLE_TASKS}"
             }
