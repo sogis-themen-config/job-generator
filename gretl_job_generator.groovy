@@ -34,7 +34,7 @@ jobsFile.eachLine { line ->
             'triggers.cron':''
         ])
 
-        def jobPropertiesFileLocation = GRETL_JOB_REPO_BASE_RAW_URL + theme + "/main/gretl" + jobName + "/job.properties"  
+        def jobPropertiesFileLocation = GRETL_JOB_REPO_BASE_RAW_URL + theme + "/main/gretl/" + jobName + "/job.properties"  
         try {
             println(jobPropertiesFileLocation)
             def jobPropertiesFileContent = new URL(jobPropertiesFileLocation).text
