@@ -35,9 +35,13 @@ jobsFile.eachLine { line ->
         ])
 
         def jobPropertiesFileLocation = GRETL_JOB_REPO_BASE_RAW_URL + theme + "/main/gretl" + jobName + "/job.properties"  
-        def jobPropertiesFileContent = new URL(jobPropertiesFileLocation).text
-        def is = new ByteArrayInputStream(iniFileContent.getBytes());
-        jobProperties.load(is)
+        try {
+            def jobPropertiesFileContent = new URL(jobPropertiesFileLocation).text
+            def is = new ByteArrayInputStream(jobPropertiesFileContent.getBytes());
+            jobProperties.load(is)
+        } catch (java.io.FileNotFoundException e) {
+            println("No job.properties file found: " + theme + " -- " + jobName)
+        }
 
         // def folderName = "gretl/${jobName}"
         // def jobPropertiesFilePath = "${folderName}/${jobPropertiesFileName}"
