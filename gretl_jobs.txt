@@ -1,2 +1,3 @@
 ch.so.afu.abbaustellen/${branch}/gretl/afu_abbaustellen_pub/
 ch.so.agi.av.meldewesen/${branch}/gretl/agi_av_meldewesen_pub/
+ch.so.agi.av.mopublic/${branch}/gretl/agi_av_mopublic_pub/
