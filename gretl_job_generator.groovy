@@ -18,10 +18,6 @@ jobsFile.eachLine { line ->
 
     def gretlJobRepoUrl = GRETL_JOB_REPO_BASE_URL + theme + ".git"
 
-    println(gretlJobRepoUrl+"*****")
-
-    //def jobName = "${jobNamePrefix}${schema}"
-
     pipelineJob(jobName) {
         // properties {
         //     disableConcurrentBuilds()
@@ -37,7 +33,7 @@ jobsFile.eachLine { line ->
             'triggers.cron':''
         ])
 
-        def folderName = "gretl/${jobName}"
+        def folderName = "${jobName}/gretl"
         def jobPropertiesFilePath = "${folderName}/${jobPropertiesFileName}"
         def jobPropertiesFile = new File(WORKSPACE, jobPropertiesFilePath)
         println(jobPropertiesFile) 
