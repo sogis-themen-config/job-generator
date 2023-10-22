@@ -34,7 +34,7 @@ jobsFile.eachLine { line ->
             'triggers.cron':''
         ])
 
-        def jobPropertiesFileLocation = GRETL_JOB_REPO_BASE_RAW_URL + thema + "/main/gretl" + jobName + "/job.properties"  
+        def jobPropertiesFileLocation = GRETL_JOB_REPO_BASE_RAW_URL + theme + "/main/gretl" + jobName + "/job.properties"  
         def jobPropertiesFileContent = new URL(iniFileLocation).text
         def is = new ByteArrayInputStream(iniFileContent.getBytes());
         jobProperties.load(is)
