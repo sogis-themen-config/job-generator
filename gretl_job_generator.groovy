@@ -36,7 +36,6 @@ jobsFile.eachLine { line ->
 
         def jobPropertiesFileLocation = GRETL_JOB_REPO_BASE_RAW_URL + theme + "/main/gretl/" + jobName + "/job.properties"  
         try {
-            println(jobPropertiesFileLocation)
             def jobPropertiesFileContent = new URL(jobPropertiesFileLocation).text
             def is = new ByteArrayInputStream(jobPropertiesFileContent.getBytes());
             jobProperties.load(is)
@@ -44,25 +43,22 @@ jobsFile.eachLine { line ->
             println("No job.properties file found: " + theme + " -- " + jobName)
         }
 
-        // def folderName = "gretl/${jobName}"
-        // def jobPropertiesFilePath = "${folderName}/${jobPropertiesFileName}"
-        // def jobPropertiesFile = new File(WORKSPACE, jobPropertiesFilePath)
-        // println(jobPropertiesFile) 
-
-        // if (jobPropertiesFile.exists()) {
-        //     println '    job properties file found: ' + jobPropertiesFilePath
-        //     jobProperties.load(new FileReader(jobPropertiesFile))
-        // }
-
         if (jobProperties.getProperty('logRotator.numToKeep') != 'unlimited') {
             logRotator {
                 numToKeep(jobProperties.getProperty('logRotator.numToKeep') as Integer)
             }
         }
 
-
-        logRotator {
-            numToKeep(10)
+        if (jobProperties.getProperty('triggers.cron') != '') { 
+            properties {
+                pipelineTriggers {
+                    triggers {
+                        cron {
+                        spec(jobProperties.getProperty('triggers.cron'))
+                        }
+                    }
+                }
+            }
         }
 
         environmentVariables {
