@@ -1,6 +1,7 @@
 def branch = 'main' // ??
 
 def GRETL_JOB_REPO_BASE_URL = 'https://github.com/sogis-themen-config/'
+def GRETL_JOB_REPO_BASE_RAW_URL = 'https://raw.githubusercontent.com/sogis-themen-config/'
 def jobPropertiesFileName = 'job.properties'
 
 def jobsFile = readFileFromWorkspace('gretl_jobs.txt')
@@ -33,15 +34,20 @@ jobsFile.eachLine { line ->
             'triggers.cron':''
         ])
 
-        def folderName = "${jobName}/gretl"
-        def jobPropertiesFilePath = "${folderName}/${jobPropertiesFileName}"
-        def jobPropertiesFile = new File(WORKSPACE, jobPropertiesFilePath)
-        println(jobPropertiesFile) 
+        def jobPropertiesFileLocation = GRETL_JOB_REPO_BASE_RAW_URL + thema + "/main/gretl" + jobName + "/job.properties"  
+        def jobPropertiesFileContent = new URL(iniFileLocation).text
+        def is = new ByteArrayInputStream(iniFileContent.getBytes());
+        jobProperties.load(is)
 
-        if (jobPropertiesFile.exists()) {
-            println '    job properties file found: ' + jobPropertiesFilePath
-            jobProperties.load(new FileReader(jobPropertiesFile))
-        }
+        // def folderName = "gretl/${jobName}"
+        // def jobPropertiesFilePath = "${folderName}/${jobPropertiesFileName}"
+        // def jobPropertiesFile = new File(WORKSPACE, jobPropertiesFilePath)
+        // println(jobPropertiesFile) 
+
+        // if (jobPropertiesFile.exists()) {
+        //     println '    job properties file found: ' + jobPropertiesFilePath
+        //     jobProperties.load(new FileReader(jobPropertiesFile))
+        // }
 
         if (jobProperties.getProperty('logRotator.numToKeep') != 'unlimited') {
             logRotator {
