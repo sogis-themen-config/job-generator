@@ -35,7 +35,7 @@ jobsFile.eachLine { line ->
         ])
 
         def jobPropertiesFileLocation = GRETL_JOB_REPO_BASE_RAW_URL + theme + "/main/gretl" + jobName + "/job.properties"  
-        def jobPropertiesFileContent = new URL(iniFileLocation).text
+        def jobPropertiesFileContent = new URL(jobPropertiesFileLocation).text
         def is = new ByteArrayInputStream(iniFileContent.getBytes());
         jobProperties.load(is)
 
