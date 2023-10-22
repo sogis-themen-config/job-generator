@@ -1,7 +1,7 @@
 def branch = 'main' // ??
 
 def GRETL_JOB_REPO_BASE_URL = 'https://github.com/sogis-themen-config/'
-//def jobNamePrefix = 'schema_'
+def jobPropertiesFileName = 'job.properties'
 
 def jobsFile = readFileFromWorkspace('gretl_jobs.txt')
 jobsFile.eachLine { line ->
@@ -26,6 +26,33 @@ jobsFile.eachLine { line ->
         // properties {
         //     disableConcurrentBuilds()
         // }   
+
+        // set defaults for job properties
+        def jobProperties = new Properties([
+            'authorization.permissions':'nobody',
+            'logRotator.numToKeep':'10',
+            'parameters.fileParam':'none',
+            'parameters.stringParams':'none',
+            'triggers.upstream':'none',
+            'triggers.cron':''
+        ])
+
+        def folderName = "gretl/${jobName}"
+        def jobPropertiesFilePath = "${folderName}/${jobPropertiesFileName}"
+        def jobPropertiesFile = new File(WORKSPACE, jobPropertiesFilePath)
+        println(jobPropertiesFile) 
+
+        if (jobPropertiesFile.exists()) {
+            println '    job properties file found: ' + jobPropertiesFilePath
+            jobProperties.load(new FileReader(jobPropertiesFile))
+        }
+
+        if (jobProperties.getProperty('logRotator.numToKeep') != 'unlimited') {
+            logRotator {
+                numToKeep(jobProperties.getProperty('logRotator.numToKeep') as Integer)
+            }
+        }
+
 
         logRotator {
             numToKeep(10)
