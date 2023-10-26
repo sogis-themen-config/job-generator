@@ -1,3 +1,4 @@
 ch.so.afu.abbaustellen/${branch}/schema/afu_abbaustellen_pub/afu_abbaustellen_pub.ini
 ch.so.agi.av.meldewesen/${branch}/schema/agi_av_meldewesen_work_pub/agi_av_meldewesen_work_pub.ini
 ch.so.agi.av.mopublic/${branch}/schema/agi_av_mopublic_pub/agi_av_mopublic_pub.ini
+ch.so.agi.av.inventar_kantonsgrenzzeichen/${branch}/schema/agi_inventar_hoheitsgrenzen_pub/agi_inventar_hoheitsgrenzen_pub.ini
