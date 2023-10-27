@@ -3,4 +3,5 @@ ch.so.afu.belastete_standorte/${branch}/schema/afu_altlasten_pub/afu_altlasten_p
 ch.so.agi.av.meldewesen/${branch}/schema/agi_av_meldewesen_work_pub/agi_av_meldewesen_work_pub.ini
 ch.so.agi.av.mopublic/${branch}/schema/agi_mopublic_pub/agi_mopublic_pub.ini
 ch.so.agi.av.inventar_kantonsgrenzzeichen/${branch}/schema/agi_inventar_hoheitsgrenzen_pub/agi_inventar_hoheitsgrenzen_pub.ini
+ch.so.alw.fruchtfolgeflaechen/${branch}/schema/alw_fruchtfolgeflaechen_pub/alw_fruchtfolgeflaechen_pub.ini
 ch.so.arp.nutzungsplanung/${branch}/schema/arp_nutzungsplanung_pub/arp_nutzungsplanung_pub.ini

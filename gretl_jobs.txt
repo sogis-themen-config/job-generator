@@ -3,5 +3,6 @@ ch.so.afu.belastete_standorte/${branch}/gretl/afu_altlasten_pub/
 ch.so.agi.av.meldewesen/${branch}/gretl/agi_av_meldewesen_pub/
 ch.so.agi.av.mopublic/${branch}/gretl/agi_mopublic_pub/
 ch.so.agi.av.inventar_kantonsgrenzzeichen/${branch}/gretl/agi_inventar_hoheitsgrenzen_pub/
+ch.so.alw.fruchtfolgeflaechen/${branch}/gretl/alw_fruchtfolgeflaechen_pub/
 ch.so.arp.nutzungsplanung/${branch}/gretl/arp_nutzungsplanung_kantonal_pub/
 ch.so.arp.nutzungsplanung/${branch}/gretl/arp_nutzungsplanung_kommunal_pub/
